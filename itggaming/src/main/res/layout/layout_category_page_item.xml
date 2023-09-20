@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+            android:id="@+id/iv_category_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            android:src="@drawable/ic_india_today_ph_medium"
+            android:scaleType="fitXY"
+            android:elevation="20dp"
+            android:background="@drawable/bg_carousal_images"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:id="@+id/tv_category_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="PUBG"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/rubik_medium"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/iv_category_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
