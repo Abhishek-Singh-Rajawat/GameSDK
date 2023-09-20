@@ -7,21 +7,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_featured_landing"
     tools:ignore="MissingDefaultResource">
-    <TextView
+    <com.example.itggaming.util.CustomFontTextView
         android:id="@+id/tv_featured_heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
+        app:customFontStyle="bold"
         android:textSize="22sp"
         android:text="New and Updated Games"
-        android:fontFamily="@font/rubik_medium"
         android:textColor="@color/white" />
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_featured_carousal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:clipToPadding="false"
         android:clipChildren="false" />
     <com.google.android.material.tabs.TabLayout

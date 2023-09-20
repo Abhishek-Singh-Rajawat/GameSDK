@@ -12,8 +12,8 @@ class GameLandingRepository(private val gameService: GameService) {
     val games:LiveData<GameLandingModel>
         get() =gamesLiveData
 
-    suspend fun getGames(){
-        val result=gameService.getGames()
+    suspend fun getGames(url :String){
+        val result=gameService.getGames(url)
         if(result?.body() != null){
             gamesLiveData.postValue(result.body())
         }

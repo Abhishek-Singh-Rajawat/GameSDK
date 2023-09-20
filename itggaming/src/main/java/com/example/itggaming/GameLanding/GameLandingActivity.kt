@@ -20,8 +20,11 @@ import com.example.itggaming.GameLanding.api.repository.GameLandingRepository
 import com.example.itggaming.GameLanding.api.viewmodel.MainViewModel
 import com.example.itggaming.GameLanding.api.viewmodel.MainViewModelFactory
 import com.example.itggaming.R
+import com.example.itggaming.util.AppLanguage
 import com.example.itggaming.util.GameConstants
+import com.example.itggaming.util.LocaleHelper
 import com.facebook.shimmer.ShimmerFrameLayout
+import java.util.Locale
 
 class GameLandingActivity : AppCompatActivity() {
 
@@ -30,18 +33,32 @@ class GameLandingActivity : AppCompatActivity() {
     private lateinit var mainViewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         setContentView(R.layout.activity_game_landing)
-
         initializeModels()
         getGameList()
         setSystemProperties()
         setBackBtn()
     }
 
+    private fun setLanguage() {
+        val language=intent.getStringExtra(GameConstants.LANGUAGE)
+        if (language != null) {
+                val locale = Locale(language)
+                Locale.setDefault(locale)
+                val config = this.resources.configuration
+                config.setLayoutDirection(locale)
+                config.setLocale(locale)
+                resources.updateConfiguration(config, resources.displayMetrics)
+        }
+    }
+
     private fun initializeModels() {
+        var url=intent.getStringExtra(GameConstants.BASE_URL)
         val gameService=RetrofitHelper.getInstance().create(GameService::class.java)
         val repository=GameLandingRepository(gameService)
-        mainViewModel=ViewModelProvider(this,MainViewModelFactory(repository)).get(MainViewModel::class.java)
+        if(url!=null)
+            mainViewModel=ViewModelProvider(this,MainViewModelFactory(repository,url)).get(MainViewModel::class.java)
     }
 
     private fun setBackBtn() {
@@ -111,13 +128,13 @@ class GameLandingActivity : AppCompatActivity() {
     }
 
     private fun setFilterData() {
-        var gameData=filterDataList()
+        val gameData=filterDataList()
         dataList.clear()
         dataList.addAll(gameData)
     }
 
     private fun filterDataList():ArrayList<GameList> {
-        var arr= arrayListOf<GameList>()
+        val arr= arrayListOf<GameList>()
         arr.addAll(dataList)
         var i=0;
         while (i<arr.size){

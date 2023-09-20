@@ -39,7 +39,6 @@ class CategoriesLandingAdapter(list: ArrayList<Games>):
         if(dataset.get(position).images!=null){
             Glide.with(holder.itemView.context)
                 .load(dataset.get(position).images?.icon)
-                .apply(RequestOptions().override(150,150))
                 .into(holder.categoryImg)
         }
         holder.categoryTitle.text=dataset.get(position).gameName

@@ -9,11 +9,11 @@ import kotlinx.coroutines.Dispatchers
 
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: GameLandingRepository):ViewModel() {
+class MainViewModel(private val repository: GameLandingRepository,url:String):ViewModel() {
 
     init {
         viewModelScope.launch (Dispatchers.IO){
-            repository.getGames()
+            repository.getGames(url)
         }
 
     }

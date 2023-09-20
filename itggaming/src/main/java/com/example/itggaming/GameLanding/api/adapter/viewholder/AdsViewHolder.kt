@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.itggaming.R
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
@@ -24,15 +25,19 @@ class AdsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
                 mAdView.adUnitId=adUnitId
             }
             var adContainer=itemView.findViewById<LinearLayout>(R.id.ad_container)
+            val shimmerLayout=itemView.findViewById<ShimmerFrameLayout>(R.id.shimmer)
             adContainer.removeAllViews()
             adContainer.addView(mAdView)
             val adRequest =
                 AdManagerAdRequest.Builder()
                     .build()
+
             mAdView!!.adListener = object : AdListener() {
                 override fun onAdLoaded() {
                     // Code to be executed when an ad finishes loading.
                     itemView.visibility = View.VISIBLE
+                    adContainer.visibility=View.VISIBLE
+                    shimmerLayout.visibility=View.GONE
                     isLoaded=true
 
                 }
@@ -40,6 +45,7 @@ class AdsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     // Code to be executed when an ad request fails.
                     itemView.visibility = View.GONE
+                    shimmerLayout.visibility=View.GONE
                 }
 
                 override fun onAdOpened() {

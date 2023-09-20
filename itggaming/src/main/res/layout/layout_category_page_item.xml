@@ -19,15 +19,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
         />
-    <TextView
+    <com.example.itggaming.util.CustomFontTextView
         android:id="@+id/tv_category_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="PUBG"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:layout_marginTop="5dp"
-        android:fontFamily="@font/rubik_medium"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/iv_category_image"
         app:layout_constraintStart_toStartOf="parent"

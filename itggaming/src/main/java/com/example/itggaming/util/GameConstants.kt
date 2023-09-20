@@ -14,6 +14,9 @@ object GameConstants {
     const val GAME_DATA="gameData"
 
     const val EMPTY=""
+    const val LANGUAGE="language"
+
+    const val BASE_URL="baseURL"
 
     val EMPTY_AD_DATA= GameList(type = "ads","","", arrayListOf())
     val EMPTY_GAME_DATA=Games("","","","")

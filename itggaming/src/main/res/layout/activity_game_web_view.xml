@@ -47,13 +47,15 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/iv_web_back_btn"
+                        >
 
-                        <TextView
+                        <com.example.itggaming.util.CustomFontTextView
                             android:id="@+id/tv_game_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
+                            app:customFontStyle="bold"
                             android:textSize="22sp"
                             android:layout_marginStart="10dp"
                             android:textColor="@color/white"

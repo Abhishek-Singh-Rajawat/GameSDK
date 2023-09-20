@@ -5,30 +5,31 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:clickable="true"
-    android:paddingHorizontal="10dp"
+    android:paddingHorizontal="6dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_image_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="10dp"
         android:elevation="10dp">
         <ImageView
             android:id="@+id/iv_category_image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:src="@drawable/ic_india_today_ph_medium"
             android:scaleType="fitXY"/>
     </androidx.cardview.widget.CardView>
-    <TextView
+    <com.example.itggaming.util.CustomFontTextView
         android:id="@+id/tv_category_title"
-        android:layout_width="150dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="PUBG"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="13sp"
         android:layout_marginTop="5dp"
-        android:fontFamily="@font/rubik_medium"
         android:gravity="center"
+        android:maxLines="2"
+        android:ellipsize="end"
         />
 </androidx.appcompat.widget.LinearLayoutCompat>

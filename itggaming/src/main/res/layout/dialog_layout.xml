@@ -1,99 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:gravity="center">
+    android:background="@drawable/bg_dialog"
+    android:elevation="15dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
+        <com.example.itggaming.util.CustomFontTextView
+            android:id="@+id/tv_quit_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/quit_game"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:customFontStyle="bold" />
+
+        <com.example.itggaming.util.CustomFontTextView
+            android:id="@+id/quest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_quit_heading"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="10dp"
+            android:text="@string/do_you_really_want_to_quit_the_game"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:customFontStyle="bold" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="165dp"
-            android:layout_gravity="center"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="15dp">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/quest"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-            <TextView
+            <Button
+                android:id="@+id/bt_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="Quit Game?"
-                android:fontFamily="@font/rubik_medium"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
+                android:backgroundTint="@color/bg_featured"
+                android:elevation="10dp"
+                android:text="@string/yes"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
-            <TextView
+            <Button
+                android:id="@+id/bt_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:paddingHorizontal="10dp"
-                android:text="Do you really want to quit the game?"
-                android:textSize="18dp"
-                android:fontFamily="@font/rubik_medium"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/bg_featured"
+                android:text="@string/no"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/frmNo"
-        android:layout_marginRight="45dp"
-        android:layout_marginTop="75dp">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_no"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@android:color/transparent"
-            app:backgroundTint="@color/bg_featured" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:elevation="6dp"
-            android:text="No"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/frmOk"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="75dp">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_yes"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:backgroundTint="@color/bg_featured" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:elevation="6dp"
-            android:text="Yes"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-    </FrameLayout>
-</FrameLayout>

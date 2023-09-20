@@ -11,6 +11,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.webkit.WebSettings
 import android.webkit.WebView
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
@@ -135,11 +136,11 @@ class GameWebViewActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_layout)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        val mDialogNo = dialog.findViewById<FloatingActionButton>(R.id.btn_no)
+        val mDialogNo = dialog.findViewById<Button>(R.id.bt_no)
         mDialogNo.setOnClickListener {
             dialog.dismiss()
         }
-        val mDialogOk = dialog.findViewById<FloatingActionButton>(R.id.btn_yes)
+        val mDialogOk = dialog.findViewById<Button>(R.id.bt_yes)
         mDialogOk.setOnClickListener {
             dialog.dismiss()
             finish()

@@ -56,14 +56,14 @@
                                     android:layout_height="wrap_content"
                                     android:background="@drawable/ic_game_cube"/>
 
-                                <TextView
+                                <com.example.itggaming.util.CustomFontTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textStyle="bold"
+                                    app:customFontStyle="bold"
                                     android:textSize="22sp"
                                     android:layout_marginStart="10dp"
                                     android:textColor="@color/white"
-                                    android:text="Games"/>
+                                    android:text="@string/game_heading"/>
 
                             </LinearLayout>
 
