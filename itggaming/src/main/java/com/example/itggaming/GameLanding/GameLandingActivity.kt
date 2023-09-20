@@ -84,18 +84,13 @@ class GameLandingActivity : AppCompatActivity() {
         var i= data.ads?.adLandingPosition
         val arr=dataList
         val adsData=GameList(type = "ads","","", arrayListOf())
-        if (i != null) {
-            if(i<arr.size){
+        if (i != null && i!=0) {
                 while(i<arr.size){
                     arr.add(i,adsData)
                     if (adPosition != null) {
                         i+=adPosition
                     }
                 }
-            }
-            else{
-                arr.add(adsData)
-            }
         }
         return arr
     }
@@ -104,13 +99,37 @@ class GameLandingActivity : AppCompatActivity() {
         mainViewModel.games.observe(this, Observer {
             if(it.data!=null){
                 data= it.data!!
-                dataList= data.gameList
+                dataList=data.gameList
                 val shimmer=findViewById<ShimmerFrameLayout>(R.id.shimmer)
                 shimmer.stopShimmer()
                 shimmer.visibility= View.GONE
+                setFilterData()
                 setDataWithAds()
                 setRecyclerView()
             }
         })
     }
+
+    private fun setFilterData() {
+        var gameData=filterDataList()
+        dataList.clear()
+        dataList.addAll(gameData)
+    }
+
+    private fun filterDataList():ArrayList<GameList> {
+        var arr= arrayListOf<GameList>()
+        arr.addAll(dataList)
+        var i=0;
+        while (i<arr.size){
+            arr[i].games.removeIf { !(it.device.equals("all") || it.device.equals("android")) }
+            arr[i].games.removeIf { it.enabled.equals("false") }
+            if(arr[i].games.size==0)
+                arr.removeAt(i)
+            i++
+
+        }
+
+        return arr
+    }
+
 }

@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class MainViewModel(private val repository: GameLandingRepository):ViewModel() {
 
     init {
-        viewModelScope.launch {
+        viewModelScope.launch (Dispatchers.IO){
             repository.getGames()
         }
 

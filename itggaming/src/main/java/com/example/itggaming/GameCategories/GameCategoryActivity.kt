@@ -59,14 +59,16 @@ class GameCategoryActivity : AppCompatActivity() {
     private fun setRecyclerView() {
         val recyclerView=findViewById<RecyclerView>(R.id.rv_gameCategory)
 
-        var adsRowPosition=adsData.getInt(GameConstants.AD_CATEGORY_POSITION)
+        val adsRowPosition=adsData.getInt(GameConstants.AD_CATEGORY_POSITION)
         adItemPosition=adsRowPosition*2+1
 
         val gameData= categoryData.games
-        if(gameData.size%2!=0){
-            gameData.add(GameConstants.EMPTY_GAME_DATA)
+
+        val gameDataWithAds=if(adsRowPosition!=0){
+            addAdsToList(gameData)
         }
-        val gameDataWithAds=addAdsToList(gameData)
+        else
+            gameData
 
         val adapter= adsData.getString(GameConstants.AD_UNIT_ID)
             ?.let { GameCategoriesAdapter(it, gameDataWithAds,recyclerView) }

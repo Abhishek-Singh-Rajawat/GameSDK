@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.itggaming.GameLanding.api.adapter.CategoriesLandingAdapter
 import com.example.itggaming.GameLanding.api.model.GameList
@@ -22,12 +21,12 @@ class CategoriesLandingViewHolder(itemView: View):RecyclerView.ViewHolder(itemVi
         categoryTitle.text=list.category
         categoryRecyclerView.layoutManager=LinearLayoutManager(itemView.context,LinearLayoutManager.HORIZONTAL,false)
         categoryRecyclerView.adapter= CategoriesLandingAdapter(list.games)
+        categoryRecyclerView.onFlingListener=null
         categoryDetailButton.setOnClickListener {
             val intent=Intent(itemView.context, GameCategoryActivity::class.java)
             intent.putExtra(GameConstants.AD_BUNDLE,adsBundle)
             intent.putExtra(GameConstants.CATEGORY_DATA,list)
             itemView.context.startActivity(intent)
         }
-
     }
 }

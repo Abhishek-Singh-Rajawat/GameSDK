@@ -22,12 +22,12 @@ class CategoriesLandingAdapter(list: ArrayList<Games>):
         var categoryImg=view.findViewById<ImageView>(R.id.iv_category_image)
         var categoryTitle=view.findViewById<TextView>(R.id.tv_category_title)
         var cardLayout=view.findViewById<LinearLayoutCompat>(R.id.card_layout)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_landing_category, parent, false)
-
         return Viewholder(view)
     }
 
