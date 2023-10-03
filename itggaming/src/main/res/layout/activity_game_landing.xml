@@ -79,7 +79,7 @@
                     app:shimmer_auto_start="true"
                     android:layout_marginTop="60dp"
                     app:shimmer_direction="left_to_right"
-                    app:shimmer_shape="radial">
+                    app:shimmer_shape="linear">
                     <include
                         layout="@layout/layout_shimmer"/>
                 </com.facebook.shimmer.ShimmerFrameLayout>

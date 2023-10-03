@@ -17,13 +17,21 @@
         android:textSize="22sp"
         android:text="New and Updated Games"
         android:textColor="@color/white" />
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_featured_carousal"
+<!--    <androidx.viewpager2.widget.ViewPager2-->
+<!--        android:id="@+id/vp_featured_carousal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:clipToPadding="false"-->
+<!--        android:clipChildren="false" />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_featured_carousal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:clipToPadding="false"
-        android:clipChildren="false" />
+        android:layout_marginTop="16dp"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tl_vp_tabs"
         android:layout_width="wrap_content"

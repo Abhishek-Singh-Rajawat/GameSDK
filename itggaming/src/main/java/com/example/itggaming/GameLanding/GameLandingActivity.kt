@@ -2,8 +2,11 @@ package com.example.itggaming.GameLanding
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -16,14 +19,14 @@ import com.example.itggaming.GameLanding.api.apiService.GameService
 import com.example.itggaming.GameLanding.api.apiService.RetrofitHelper
 import com.example.itggaming.GameLanding.api.model.Data
 import com.example.itggaming.GameLanding.api.model.GameList
+import com.example.itggaming.GameLanding.api.model.Games
 import com.example.itggaming.GameLanding.api.repository.GameLandingRepository
 import com.example.itggaming.GameLanding.api.viewmodel.MainViewModel
 import com.example.itggaming.GameLanding.api.viewmodel.MainViewModelFactory
 import com.example.itggaming.R
-import com.example.itggaming.util.AppLanguage
 import com.example.itggaming.util.GameConstants
-import com.example.itggaming.util.LocaleHelper
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.material.button.MaterialButton
 import java.util.Locale
 
 class GameLandingActivity : AppCompatActivity() {
@@ -31,6 +34,9 @@ class GameLandingActivity : AppCompatActivity() {
     private lateinit var data:Data
     private lateinit var dataList:ArrayList<GameList>
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var url: String
+    private lateinit var repository: GameLandingRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setLanguage()
@@ -54,12 +60,17 @@ class GameLandingActivity : AppCompatActivity() {
     }
 
     private fun initializeModels() {
-        var url=intent.getStringExtra(GameConstants.BASE_URL)
+        url=intent.getStringExtra(GameConstants.BASE_URL)!!
         val gameService=RetrofitHelper.getInstance().create(GameService::class.java)
-        val repository=GameLandingRepository(gameService)
+        repository=GameLandingRepository(gameService)
+        callApi(repository,url)
+    }
+
+    private fun callApi(repository: GameLandingRepository, url: String?) {
         if(url!=null)
             mainViewModel=ViewModelProvider(this,MainViewModelFactory(repository,url)).get(MainViewModel::class.java)
     }
+
 
     private fun setBackBtn() {
         val backBtn=findViewById<ImageView>(R.id.iv_back_btn)
@@ -90,7 +101,7 @@ class GameLandingActivity : AppCompatActivity() {
     }
 
     private fun setSystemProperties() {
-        window.statusBarColor=getColor(R.color.toolbar)
+        window.statusBarColor=ContextCompat.getColor(this,R.color.toolbar)
         val windowInsetsController=WindowCompat.getInsetsController(window,window.decorView)
         windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
         windowInsetsController.systemBarsBehavior= WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
@@ -138,8 +149,12 @@ class GameLandingActivity : AppCompatActivity() {
         arr.addAll(dataList)
         var i=0;
         while (i<arr.size){
-            arr[i].games.removeIf { !(it.device.equals("all") || it.device.equals("android")) }
-            arr[i].games.removeIf { it.enabled.equals("false") }
+            var filterListDevices=arr[i].games.filter{ !(it.device.equals("all") || it.device.equals("android"))} as ArrayList<Games>
+//            arr[i].games.removeIf { !(it.device.equals("all") || it.device.equals("android")) }
+            val filterListEnabled=arr[i].games.filter {it.enabled!!.equals("false") }
+//            arr[i].games.removeIf { it.enabled.equals("false") }
+            arr[i].games.removeAll(filterListDevices)
+            arr[i].games.removeAll(filterListEnabled)
             if(arr[i].games.size==0)
                 arr.removeAt(i)
             i++

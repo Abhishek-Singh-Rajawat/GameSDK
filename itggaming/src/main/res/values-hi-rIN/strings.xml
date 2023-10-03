@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="quit_game">बहार निकले</string>
+    <string name="quit_game">बाहर निकले</string>
     <string name="game_heading">खेल</string>
     <string name="do_you_really_want_to_quit_the_game">क्या आप खेल से बाहर निकलना चाहते हैं?</string>
     <string name="yes">हां</string>

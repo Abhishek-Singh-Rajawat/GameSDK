@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#eaeaea"
@@ -13,25 +14,34 @@
         android:layout_height="wrap_content"
         android:text="ADVERTISEMENT"
         android:textSize="12sp"
+        android:textColor="@color/black"
         android:layout_marginBottom="5dp" />
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:shimmer_auto_start="true"
-        app:shimmer_direction="left_to_right"
-        app:shimmer_shape="radial">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="@color/colorBlack50Transpa"/>
-    </com.facebook.shimmer.ShimmerFrameLayout>
-    <LinearLayout
-        android:id="@+id/ad_container"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:visibility="gone"
-        android:minHeight="250dp"/>
+        >
+        <LinearLayout
+            android:id="@+id/ad_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="visible"
+            android:minHeight="250dp">
+        </LinearLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:shimmer_auto_start="true"
+            app:shimmer_direction="left_to_right"
+            app:shimmer_shape="linear">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@color/colorBlack50Transpa"/>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </RelativeLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

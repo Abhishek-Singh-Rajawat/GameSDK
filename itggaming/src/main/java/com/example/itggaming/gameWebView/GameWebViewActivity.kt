@@ -1,5 +1,6 @@
 package com.example.itggaming.gameWebView
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.pm.ActivityInfo
 import android.graphics.Color
@@ -9,16 +10,23 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.webkit.WebChromeClient
+import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.webkit.WebSettingsCompat
+import androidx.webkit.WebViewCompat
 import com.example.itggaming.GameLanding.api.model.Games
 import com.example.itggaming.R
 import com.example.itggaming.util.GameConstants
@@ -37,6 +45,7 @@ class GameWebViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_game_web_view)
+        webView = findViewById(R.id.gameWebView)
         setBackButton()
         setIntentData()
         setupWebView()
@@ -56,9 +65,8 @@ class GameWebViewActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun setupWebView() {
-        webView = findViewById(R.id.gameWebView)
-
         webView.settings.javaScriptEnabled = true
         webView.settings.useWideViewPort = true
         webView.settings.loadWithOverviewMode = true
@@ -70,6 +78,19 @@ class GameWebViewActivity : AppCompatActivity() {
         webView.scrollBarStyle = View.SCROLLBARS_INSIDE_OVERLAY
         webView.settings.mediaPlaybackRequiresUserGesture = false
         webView.settings.setRenderPriority(WebSettings.RenderPriority.HIGH)
+        WebSettingsCompat.setForceDark(webView.settings, WebSettingsCompat.FORCE_DARK_ON)
+        webView.setBackgroundColor(android.R.color.transparent)
+
+        webView.webViewClient=object :WebViewClient(){
+            override fun shouldOverrideUrlLoading(
+                view: WebView?,
+                request: WebResourceRequest?
+            ): Boolean {
+                return super.shouldOverrideUrlLoading(view, request)
+                val view= view?.url
+            }
+        }
+
 
         dataset.gamePlayUrl?.let { webView.loadUrl(it) }
     }
@@ -126,7 +147,7 @@ class GameWebViewActivity : AppCompatActivity() {
             )
         } else if (isNavHidden) {
             windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
-            window.statusBarColor = getColor(R.color.toolbar)
+            window.statusBarColor = ContextCompat.getColor(this,R.color.toolbar)
         }
     }
 
@@ -143,6 +164,7 @@ class GameWebViewActivity : AppCompatActivity() {
         val mDialogOk = dialog.findViewById<Button>(R.id.bt_yes)
         mDialogOk.setOnClickListener {
             dialog.dismiss()
+            webView.destroy()
             finish()
         }
         dialog.show()

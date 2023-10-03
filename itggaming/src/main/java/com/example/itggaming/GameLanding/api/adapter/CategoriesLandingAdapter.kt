@@ -41,6 +41,7 @@ class CategoriesLandingAdapter(list: ArrayList<Games>):
                 .load(dataset.get(position).images?.icon)
                 .into(holder.categoryImg)
         }
+        holder.categoryImg.clipToOutline=true
         holder.categoryTitle.text=dataset.get(position).gameName
 
         holder.cardLayout.setOnClickListener {
