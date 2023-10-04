@@ -17,7 +17,7 @@
             android:id="@+id/iv_category_image"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/ic_india_today_ph_medium"
+            android:src="@drawable/itgg_ic_india_today_ph_medium"
             android:scaleType="fitXY"/>
     </androidx.cardview.widget.CardView>
     <com.example.itggaming.util.CustomFontTextView
@@ -25,7 +25,7 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="PUBG"
-        android:textColor="@color/white"
+        android:textColor="@color/itgg_white"
         android:textSize="13sp"
         android:layout_marginTop="5dp"
         android:gravity="center"

@@ -147,7 +147,7 @@ class GameWebViewActivity : AppCompatActivity() {
             )
         } else if (isNavHidden) {
             windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
-            window.statusBarColor = ContextCompat.getColor(this,R.color.toolbar)
+            window.statusBarColor = ContextCompat.getColor(this,R.color.itgg_toolbar)
         }
     }
 

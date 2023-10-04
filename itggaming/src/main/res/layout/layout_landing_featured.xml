@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg_featured_landing"
+    android:background="@drawable/itgg_bg_featured_landing"
     tools:ignore="MissingDefaultResource">
     <com.example.itggaming.util.CustomFontTextView
         android:id="@+id/tv_featured_heading"
@@ -16,7 +16,7 @@
         app:customFontStyle="bold"
         android:textSize="22sp"
         android:text="New and Updated Games"
-        android:textColor="@color/white" />
+        android:textColor="@color/itgg_white" />
 <!--    <androidx.viewpager2.widget.ViewPager2-->
 <!--        android:id="@+id/vp_featured_carousal"-->
 <!--        android:layout_width="match_parent"-->
@@ -44,7 +44,7 @@
         android:elevation="0dp"
         android:background="@android:color/transparent"
         android:visibility="visible"
-        app:tabBackground="@drawable/itg_tab_selector"
+        app:tabBackground="@drawable/itgg_tab_selector"
         app:tabIndicator="@null"
         app:tabIndicatorGravity="center"
         app:tabIndicatorHeight="0dp"

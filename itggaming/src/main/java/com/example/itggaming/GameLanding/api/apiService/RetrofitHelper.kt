@@ -13,8 +13,6 @@ object RetrofitHelper {
 
     var mOkHttpClient = OkHttpClient
         .Builder()
-        .connectTimeout(30,TimeUnit.SECONDS)
-        .readTimeout(30,TimeUnit.SECONDS)
         .addInterceptor(mHttpLoggingInterceptor)
         .build()
 

@@ -9,8 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_carousal_images"
-        android:backgroundTint="@color/colorBlack50Transpa"/>
+        android:background="@drawable/itgg_bg_carousal_images"
+        android:backgroundTint="@color/itgg_shimmerColor"/>
 <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="20dp"-->

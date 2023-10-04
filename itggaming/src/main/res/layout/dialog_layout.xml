@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/bg_dialog"
+    android:background="@drawable/itgg_bg_dialog"
     android:elevation="15dp">
 
     <RelativeLayout
@@ -18,7 +18,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="@string/quit_game"
+            android:text="@string/itgg_quit_game"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             app:customFontStyle="bold" />
@@ -31,7 +31,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:paddingHorizontal="10dp"
-            android:text="@string/do_you_really_want_to_quit_the_game"
+            android:text="@string/itgg_quit_quest"
             android:textAlignment="center"
             android:textSize="16sp"
             app:customFontStyle="bold" />
@@ -49,10 +49,10 @@
                 android:id="@+id/bt_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/bg_featured"
+                android:backgroundTint="@color/itgg_bg_featured"
                 android:elevation="10dp"
-                android:text="@string/yes"
-                android:textColor="@color/white"
+                android:text="@string/itgg_yes"
+                android:textColor="@color/itgg_white"
                 android:textStyle="bold" />
 
             <Button
@@ -60,9 +60,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:backgroundTint="@color/bg_featured"
-                android:text="@string/no"
-                android:textColor="@color/white"
+                android:backgroundTint="@color/itgg_bg_featured"
+                android:text="@string/itgg_no"
+                android:textColor="@color/itgg_white"
                 android:textStyle="bold" />
         </LinearLayout>
     </RelativeLayout>

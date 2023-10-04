@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:background="@color/black"
+        android:background="@color/itgg_black"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
             <com.google.android.material.appbar.AppBarLayout
@@ -20,7 +20,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:elevation="10dp"
-                        android:background="@color/toolbar"
+                        android:background="@color/itgg_toolbar"
                         android:contentInsetStart="0dp"
                         android:contentInsetLeft="0dp"
                         android:contentInsetEnd="0dp"
@@ -43,8 +43,8 @@
                                 android:scaleType="fitXY"
                                 android:clickable="true"
                                 android:layout_centerVertical="true"
-                                android:foreground="@drawable/ic_back_white"
-                                android:background="@drawable/category_btn_ripple"/>
+                                android:foreground="@drawable/itgg_ic_back_white"
+                                android:background="@drawable/itgg_category_btn_ripple"/>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
                                     android:id="@+id/ic_game"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:background="@drawable/ic_game_cube"/>
+                                    android:background="@drawable/itgg_ic_game_cube"/>
 
                                 <com.example.itggaming.util.CustomFontTextView
                                     android:layout_width="wrap_content"
@@ -62,8 +62,8 @@
                                     app:customFontStyle="bold"
                                     android:textSize="22sp"
                                     android:layout_marginStart="10dp"
-                                    android:textColor="@color/white"
-                                    android:text="@string/game_heading"/>
+                                    android:textColor="@color/itgg_white"
+                                    android:text="@string/itgg_game_heading"/>
 
                             </LinearLayout>
 
@@ -89,5 +89,5 @@
                     android:layout_height="wrap_content"
                     android:visibility="gone"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    android:background="@color/black"/>
+                    android:background="@color/itgg_black"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

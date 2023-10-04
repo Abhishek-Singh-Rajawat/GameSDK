@@ -2,7 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/black"
+    android:background="@color/itgg_black"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
             <com.google.android.material.appbar.AppBarLayout
@@ -18,7 +18,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:elevation="10dp"
-                        android:background="@color/toolbar"
+                        android:background="@color/itgg_toolbar"
                         android:contentInsetStart="0dp"
                         android:contentInsetLeft="0dp"
                         android:contentInsetEnd="0dp"
@@ -41,8 +41,8 @@
                                 android:scaleType="fitXY"
                                 android:clickable="true"
                                 android:layout_centerVertical="true"
-                                android:foreground="@drawable/ic_back_white"
-                                android:background="@drawable/category_btn_ripple"/>
+                                android:foreground="@drawable/itgg_ic_back_white"
+                                android:background="@drawable/itgg_category_btn_ripple"/>
 
                                 <com.example.itggaming.util.CustomFontTextView
                                     android:id="@+id/toolbar_category_name"
@@ -53,7 +53,7 @@
                                     android:layout_toRightOf="@id/iv_cat_back_btn"
                                     android:layout_centerVertical="true"
                                     android:layout_marginStart="10dp"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/itgg_white"
                                     android:text="Game"/>
                         </RelativeLayout>
                     </androidx.appcompat.widget.Toolbar>

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="ADVERTISEMENT"
         android:textSize="12sp"
-        android:textColor="@color/black"
+        android:textColor="@color/itgg_black"
         android:layout_marginBottom="5dp" />
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="@color/colorBlack50Transpa"/>
+                android:background="@color/itgg_shimmerColor"/>
         </com.facebook.shimmer.ShimmerFrameLayout>
 
     </RelativeLayout>

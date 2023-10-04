@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">itggaming</string>
-    <string name="game_heading">Games</string>
-    <string name="quit_game">Quit Game?</string>
-    <string name="do_you_really_want_to_quit_the_game">Do you really want to quit the game?</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
+    <string name="itgg_game_heading">Games</string>
+    <string name="itgg_quit_game">Quit Game?</string>
+    <string name="itgg_quit_quest">Do you really want to quit the game?</string>
+    <string name="itgg_yes">Yes</string>
+    <string name="itgg_no">No</string>
 </resources>

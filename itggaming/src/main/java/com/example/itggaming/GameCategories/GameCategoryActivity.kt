@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -44,10 +45,8 @@ class GameCategoryActivity : AppCompatActivity() {
     }
 
     private fun setSystemProperties() {
-        window.statusBarColor=getColor(R.color.toolbar)
-        val windowInsetsController= WindowCompat.getInsetsController(window,window.decorView)
-        windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
-        windowInsetsController.systemBarsBehavior= WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        window.statusBarColor=ContextCompat.getColor(this,R.color.itgg_toolbar)
+        window.navigationBarColor=ContextCompat.getColor(this,R.color.itgg_black)
     }
 
     private fun initViews() {
