@@ -1,5 +1,6 @@
 package com.example.itggaming.GameLanding
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -25,6 +26,7 @@ import com.example.itggaming.GameLanding.api.viewmodel.MainViewModel
 import com.example.itggaming.GameLanding.api.viewmodel.MainViewModelFactory
 import com.example.itggaming.R
 import com.example.itggaming.util.GameConstants
+import com.example.itggaming.util.GamingLogCallbacks
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.button.MaterialButton
 import java.util.Locale
@@ -86,7 +88,13 @@ class GameLandingActivity : AppCompatActivity() {
             adBundle.putString(GameConstants.AD_UNIT_ID,adsData.adUnitId)
             adsData.adCategoryPosition?.let { adBundle.putInt(GameConstants.AD_CATEGORY_POSITION, it) }
         }
-        val adapter=GameLandingAdapter(adBundle,dataList)
+
+        val callback=if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            (intent.getSerializableExtra(GameConstants.GamingLogCallbacks, GamingLogCallbacks::class.java))!!
+        } else {
+            intent.getSerializableExtra(GameConstants.GamingLogCallbacks) as GamingLogCallbacks
+        }
+        val adapter=GameLandingAdapter(adBundle,dataList,callback)
         val recyclerView=findViewById<RecyclerView>(R.id.rv_gameLanding)
         recyclerView.visibility=View.VISIBLE
         recyclerView.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
@@ -148,9 +156,7 @@ class GameLandingActivity : AppCompatActivity() {
         var i=0;
         while (i<arr.size){
             var filterListDevices=arr[i].games.filter{ !(it.device.equals("all") || it.device.equals("android"))} as ArrayList<Games>
-//            arr[i].games.removeIf { !(it.device.equals("all") || it.device.equals("android")) }
             val filterListEnabled=arr[i].games.filter {it.enabled!!.equals("false") }
-//            arr[i].games.removeIf { it.enabled.equals("false") }
             arr[i].games.removeAll(filterListDevices)
             arr[i].games.removeAll(filterListEnabled)
             if(arr[i].games.size==0)

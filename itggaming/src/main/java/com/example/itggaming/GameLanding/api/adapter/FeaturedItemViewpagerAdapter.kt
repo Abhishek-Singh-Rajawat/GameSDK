@@ -14,9 +14,10 @@ import com.example.itggaming.GameLanding.api.model.Games
 import com.example.itggaming.R
 import com.example.itggaming.gameWebView.GameWebViewActivity
 import com.example.itggaming.util.GameConstants
+import com.example.itggaming.util.GamingLogCallbacks
 import com.example.itggaming.util.SizeUtils
 
-class FeaturedItemViewpagerAdapter: RecyclerView.Adapter<FeaturedItemViewpagerAdapter.ViewHolder>(){
+class FeaturedItemViewpagerAdapter(var gamingLogCallbacks: GamingLogCallbacks): RecyclerView.Adapter<FeaturedItemViewpagerAdapter.ViewHolder>(){
 
     private var dataset= arrayListOf<Games>()
 
@@ -43,9 +44,18 @@ class FeaturedItemViewpagerAdapter: RecyclerView.Adapter<FeaturedItemViewpagerAd
 
         }
         holder.featuredItem.setOnClickListener {
+            logGameClicked(dataset.get(position%itemCounter).gameName)
             val intent= Intent(holder.itemView.context, GameWebViewActivity::class.java)
             intent.putExtra(GameConstants.GAME_DATA,dataset.get(position%itemCounter))
             holder.itemView.context.startActivity(intent)
+        }
+    }
+
+    private fun logGameClicked(gameName: String?) {
+        if(gamingLogCallbacks!=null){
+            if (gameName != null) {
+                gamingLogCallbacks.onGameClicked(gameName)
+            }
         }
     }
 

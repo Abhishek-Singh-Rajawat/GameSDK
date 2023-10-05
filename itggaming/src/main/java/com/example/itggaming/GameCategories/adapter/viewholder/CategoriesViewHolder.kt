@@ -11,8 +11,9 @@ import com.example.itggaming.GameLanding.api.model.Games
 import com.example.itggaming.R
 import com.example.itggaming.gameWebView.GameWebViewActivity
 import com.example.itggaming.util.GameConstants
+import com.example.itggaming.util.GamingLogCallbacks
 
-class CategoriesViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
+class CategoriesViewHolder(itemView: View, var gamingLogCallbacks: GamingLogCallbacks):RecyclerView.ViewHolder(itemView) {
     fun bind(game: Games, position: Int) {
         var catImg=itemView.findViewById<ImageView>(R.id.iv_category_image)
         var catTitle=itemView.findViewById<TextView>(R.id.tv_category_title)
@@ -25,9 +26,17 @@ class CategoriesViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         catTitle.text=game.gameName
 
         catImg.setOnClickListener {
+            logGameClicked(game.gameName)
             var intent= Intent(itemView.context, GameWebViewActivity::class.java)
             intent.putExtra(GameConstants.GAME_DATA,game)
             itemView.context.startActivity(intent)
+        }
+    }
+    private fun logGameClicked(gameName: String?) {
+        if(gamingLogCallbacks!=null){
+            if (gameName != null) {
+                gamingLogCallbacks.onGameClicked(gameName)
+            }
         }
     }
 }

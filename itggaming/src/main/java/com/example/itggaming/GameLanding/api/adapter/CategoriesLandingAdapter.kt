@@ -14,8 +14,9 @@ import com.example.itggaming.GameLanding.api.model.Games
 import com.example.itggaming.R
 import com.example.itggaming.gameWebView.GameWebViewActivity
 import com.example.itggaming.util.GameConstants
+import com.example.itggaming.util.GamingLogCallbacks
 
-class CategoriesLandingAdapter(list: ArrayList<Games>):
+class CategoriesLandingAdapter(list: ArrayList<Games>, var gamingLogCallbacks: GamingLogCallbacks):
     RecyclerView.Adapter<CategoriesLandingAdapter.Viewholder>() {
     var dataset=list
     class Viewholder(view: View):RecyclerView.ViewHolder(view) {
@@ -45,9 +46,17 @@ class CategoriesLandingAdapter(list: ArrayList<Games>):
         holder.categoryTitle.text=dataset.get(position).gameName
 
         holder.cardLayout.setOnClickListener {
+            logGameClicked(dataset.get(position).gameName)
             val intent= Intent(holder.itemView.context, GameWebViewActivity::class.java)
             intent.putExtra(GameConstants.GAME_DATA,dataset.get(position))
             holder.itemView.context.startActivity(intent)
+        }
+    }
+    private fun logGameClicked(gameName: String?) {
+        if(gamingLogCallbacks!=null){
+            if (gameName != null) {
+                gamingLogCallbacks.onGameClicked(gameName)
+            }
         }
     }
 }

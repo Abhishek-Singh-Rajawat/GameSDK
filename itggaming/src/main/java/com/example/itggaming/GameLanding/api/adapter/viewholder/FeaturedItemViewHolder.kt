@@ -11,10 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.itggaming.GameLanding.api.adapter.FeaturedItemViewpagerAdapter
 import com.example.itggaming.GameLanding.api.model.GameList
 import com.example.itggaming.R
+import com.example.itggaming.util.GamingLogCallbacks
 import com.google.android.material.tabs.TabLayout
 
 
-class FeaturedItemViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
+class FeaturedItemViewHolder(itemView: View,var gamingLogCallbacks: GamingLogCallbacks):RecyclerView.ViewHolder(itemView) {
     private lateinit var carousalTitle:TextView
     private lateinit var dots:TabLayout
     private lateinit var recyclerView:RecyclerView
@@ -24,7 +25,7 @@ class FeaturedItemViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
     var currentPosition=0
     var areTabSet=false
 
-    var adapter= FeaturedItemViewpagerAdapter()
+    var adapter= FeaturedItemViewpagerAdapter(gamingLogCallbacks)
     private var itemCounter=0
 
 
@@ -63,11 +64,6 @@ class FeaturedItemViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
                 scrollToNextPosition()
             }
         }
-//        recyclerView.postDelayed(
-//            Runnable {
-//                scrollToNextPosition()
-//            },4000
-//        )
 
         recyclerView.addOnScrollListener(object :RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -91,11 +87,9 @@ class FeaturedItemViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
 
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    // User is manually scrolling, so remove auto-scroll callbacks
                     timer.start()
                     Log.v("PopularGames","Timer Start")
                 } else {
-                    // User has stopped scrolling, resume auto-scrolling
                     timer.cancel()
                     Log.v("PopularGames","Timer Stopped")
                 }
@@ -103,8 +97,6 @@ class FeaturedItemViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
             }
 
         })
-
-
     }
     private fun addTabs(list: GameList) {
         var i=0

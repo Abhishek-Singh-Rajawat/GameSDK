@@ -16,6 +16,7 @@ import com.example.itggaming.GameLanding.api.model.GameList
 import com.example.itggaming.GameLanding.api.model.Games
 import com.example.itggaming.R
 import com.example.itggaming.util.GameConstants
+import com.example.itggaming.util.GamingLogCallbacks
 import java.io.Serializable
 import kotlin.properties.Delegates
 
@@ -24,6 +25,7 @@ private lateinit var categoryData:GameList
 class GameCategoryActivity : AppCompatActivity() {
     private lateinit var  adsData:Bundle
     private var adItemPosition by Delegates.notNull<Int>()
+    private lateinit var gamingLogCallbacks: GamingLogCallbacks
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_category)
@@ -36,11 +38,15 @@ class GameCategoryActivity : AppCompatActivity() {
 
     private fun setIntentData() {
         adsData= intent.getBundleExtra(GameConstants.AD_BUNDLE)!!
+
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.TIRAMISU){
             setData(intent.getSerializableExtra(GameConstants.CATEGORY_DATA,GameList::class.java))
+            gamingLogCallbacks=(intent.getSerializableExtra(GameConstants.GamingLogCallbacks, GamingLogCallbacks::class.java))!!
+
         }
         else{
             setData(intent.getSerializableExtra(GameConstants.CATEGORY_DATA))
+            gamingLogCallbacks=intent.getSerializableExtra(GameConstants.GamingLogCallbacks) as GamingLogCallbacks
         }
     }
 
@@ -70,7 +76,7 @@ class GameCategoryActivity : AppCompatActivity() {
             gameData
 
         val adapter= adsData.getString(GameConstants.AD_UNIT_ID)
-            ?.let { GameCategoriesAdapter(it, gameDataWithAds,recyclerView) }
+            ?.let { GameCategoriesAdapter(it, gameDataWithAds,recyclerView,gamingLogCallbacks) }
         recyclerView.adapter=adapter
         val gridLayoutManager=GridLayoutManager(this,2)
 

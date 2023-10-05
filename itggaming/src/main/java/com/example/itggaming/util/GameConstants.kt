@@ -17,6 +17,7 @@ object GameConstants {
     const val LANGUAGE="language"
 
     const val BASE_URL="baseURL"
+    const val GamingLogCallbacks="gamingLogCallbacks"
 
     val EMPTY_AD_DATA= GameList(type = "ads","","", arrayListOf())
     val EMPTY_GAME_DATA=Games("","","","")
