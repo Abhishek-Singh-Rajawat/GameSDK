@@ -1,6 +1,7 @@
 package com.example.itggaming.GameLanding.api.adapter
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,5 +75,12 @@ class GameLandingAdapter(adsData: Bundle, var dataset: ArrayList<GameList>): Rec
                 4
             }
         }
+    }
+
+    override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
+        if(holder is FeaturedItemViewHolder){
+            holder.stopTimer()
+        }
+        super.onViewRecycled(holder)
     }
 }

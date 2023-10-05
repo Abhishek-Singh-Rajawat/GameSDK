@@ -29,6 +29,7 @@
         android:textSize="13sp"
         android:layout_marginTop="5dp"
         android:gravity="center"
+        android:minLines="2"
         android:maxLines="2"
         android:ellipsize="end"
         />
