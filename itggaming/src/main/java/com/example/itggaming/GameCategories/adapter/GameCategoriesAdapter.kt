@@ -10,7 +10,7 @@ import com.example.itggaming.GameLanding.api.model.Games
 import com.example.itggaming.R
 import com.example.itggaming.util.GamingLogCallbacks
 
-class GameCategoriesAdapter(adUnitId:String, dataset: ArrayList<Games>, rv:RecyclerView, var gamingLogCallbacks: GamingLogCallbacks): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GameCategoriesAdapter(adUnitId:String, dataset: ArrayList<Games>, rv:RecyclerView): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var dataset=dataset
     val adUnitId=adUnitId
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -18,7 +18,7 @@ class GameCategoriesAdapter(adUnitId:String, dataset: ArrayList<Games>, rv:Recyc
         when(viewType){
             0->{
                 val view: View =inflater.inflate(R.layout.layout_category_page_item,parent,false)
-                return CategoriesViewHolder(view,gamingLogCallbacks)
+                return CategoriesViewHolder(view)
             }
             1->{
                 val view: View =inflater.inflate(R.layout.layout_landing_ads,parent,false)

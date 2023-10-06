@@ -14,10 +14,11 @@ import com.example.itggaming.GameLanding.api.model.Games
 import com.example.itggaming.R
 import com.example.itggaming.gameWebView.GameWebViewActivity
 import com.example.itggaming.util.GameConstants
+import com.example.itggaming.util.GamingCallback
 import com.example.itggaming.util.GamingLogCallbacks
 import com.example.itggaming.util.SizeUtils
 
-class FeaturedItemViewpagerAdapter(var gamingLogCallbacks: GamingLogCallbacks): RecyclerView.Adapter<FeaturedItemViewpagerAdapter.ViewHolder>(){
+class FeaturedItemViewpagerAdapter(): RecyclerView.Adapter<FeaturedItemViewpagerAdapter.ViewHolder>(){
 
     private var dataset= arrayListOf<Games>()
 
@@ -52,10 +53,8 @@ class FeaturedItemViewpagerAdapter(var gamingLogCallbacks: GamingLogCallbacks): 
     }
 
     private fun logGameClicked(gameName: String?) {
-        if(gamingLogCallbacks!=null){
-            if (gameName != null) {
-                gamingLogCallbacks.onGameClicked(gameName)
-            }
+        if (gameName != null) {
+            GamingCallback.onGameSelected(gameName)
         }
     }
 

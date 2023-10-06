@@ -29,6 +29,7 @@ import com.example.itggaming.util.GameConstants
 import com.example.itggaming.util.GamingLogCallbacks
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.button.MaterialButton
+import java.io.Serializable
 import java.util.Locale
 
 class GameLandingActivity : AppCompatActivity() {
@@ -89,12 +90,12 @@ class GameLandingActivity : AppCompatActivity() {
             adsData.adCategoryPosition?.let { adBundle.putInt(GameConstants.AD_CATEGORY_POSITION, it) }
         }
 
-        val callback=if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            (intent.getSerializableExtra(GameConstants.GamingLogCallbacks, GamingLogCallbacks::class.java))!!
-        } else {
-            intent.getSerializableExtra(GameConstants.GamingLogCallbacks) as GamingLogCallbacks
-        }
-        val adapter=GameLandingAdapter(adBundle,dataList,callback)
+//        val callback=if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            (intent.getSerializableExtra(GameConstants.GamingLogCallbacks, GamingLogCallbacks::class.java))!!
+//        } else {
+//            intent.getSerializableExtra(GameConstants.GamingLogCallbacks) as GamingLogCallbacks
+//        }
+        val adapter=GameLandingAdapter(adBundle,dataList)
         val recyclerView=findViewById<RecyclerView>(R.id.rv_gameLanding)
         recyclerView.visibility=View.VISIBLE
         recyclerView.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)

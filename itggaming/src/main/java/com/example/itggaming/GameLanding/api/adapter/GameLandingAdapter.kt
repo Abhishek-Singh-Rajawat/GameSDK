@@ -15,18 +15,18 @@ import com.example.itggaming.R
 import com.example.itggaming.util.GameConstants
 import com.example.itggaming.util.GamingLogCallbacks
 
-class GameLandingAdapter(adsData: Bundle, var dataset: ArrayList<GameList>,var gamingLogCallbacks: GamingLogCallbacks): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GameLandingAdapter(adsData: Bundle, var dataset: ArrayList<GameList>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val adsBundle=adsData
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater=LayoutInflater.from(parent.context)
         when(viewType){
             0->{
                 val view: View =inflater.inflate(R.layout.layout_landing_featured,parent,false)
-                return FeaturedItemViewHolder(view,gamingLogCallbacks)
+                return FeaturedItemViewHolder(view)
             }
             1->{
                 val view: View =inflater.inflate(R.layout.layout_landing_category,parent,false)
-                return CategoriesLandingViewHolder(view,gamingLogCallbacks)
+                return CategoriesLandingViewHolder(view)
             }
             2->{
                 val view: View =inflater.inflate(R.layout.layout_landing_ads,parent,false)

@@ -15,7 +15,7 @@ import com.example.itggaming.util.GamingLogCallbacks
 import com.google.android.material.tabs.TabLayout
 
 
-class FeaturedItemViewHolder(itemView: View,var gamingLogCallbacks: GamingLogCallbacks):RecyclerView.ViewHolder(itemView) {
+class FeaturedItemViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
     private lateinit var carousalTitle:TextView
     private lateinit var dots:TabLayout
     private lateinit var recyclerView:RecyclerView
@@ -25,7 +25,7 @@ class FeaturedItemViewHolder(itemView: View,var gamingLogCallbacks: GamingLogCal
     var currentPosition=0
     var areTabSet=false
 
-    var adapter= FeaturedItemViewpagerAdapter(gamingLogCallbacks)
+    var adapter= FeaturedItemViewpagerAdapter()
     private var itemCounter=0
 
 

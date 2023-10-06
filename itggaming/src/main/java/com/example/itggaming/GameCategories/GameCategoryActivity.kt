@@ -25,7 +25,6 @@ private lateinit var categoryData:GameList
 class GameCategoryActivity : AppCompatActivity() {
     private lateinit var  adsData:Bundle
     private var adItemPosition by Delegates.notNull<Int>()
-    private lateinit var gamingLogCallbacks: GamingLogCallbacks
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_category)
@@ -41,12 +40,9 @@ class GameCategoryActivity : AppCompatActivity() {
 
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.TIRAMISU){
             setData(intent.getSerializableExtra(GameConstants.CATEGORY_DATA,GameList::class.java))
-            gamingLogCallbacks=(intent.getSerializableExtra(GameConstants.GamingLogCallbacks, GamingLogCallbacks::class.java))!!
-
         }
         else{
             setData(intent.getSerializableExtra(GameConstants.CATEGORY_DATA))
-            gamingLogCallbacks=intent.getSerializableExtra(GameConstants.GamingLogCallbacks) as GamingLogCallbacks
         }
     }
 
@@ -76,7 +72,7 @@ class GameCategoryActivity : AppCompatActivity() {
             gameData
 
         val adapter= adsData.getString(GameConstants.AD_UNIT_ID)
-            ?.let { GameCategoriesAdapter(it, gameDataWithAds,recyclerView,gamingLogCallbacks) }
+            ?.let { GameCategoriesAdapter(it, gameDataWithAds,recyclerView) }
         recyclerView.adapter=adapter
         val gridLayoutManager=GridLayoutManager(this,2)
 
