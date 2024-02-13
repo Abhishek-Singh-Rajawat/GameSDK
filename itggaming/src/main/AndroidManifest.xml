@@ -9,7 +9,7 @@
             android:theme="@style/noAnimTheme"
             android:exported="false" />
         <activity
-            android:name=".GameCategories.GameCategoryActivity"
+            android:name="com.itg.itggaming.gameCategories.GameCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/noAnimTheme"
             android:exported="false" />
@@ -19,7 +19,7 @@
             android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <activity
-            android:name=".GameLanding.GameLandingActivity"
+            android:name=".gameLanding.GameLandingActivity"
             android:screenOrientation="portrait"
             android:exported="true">
         </activity>

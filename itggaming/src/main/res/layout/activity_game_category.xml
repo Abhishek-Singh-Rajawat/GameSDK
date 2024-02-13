@@ -44,7 +44,7 @@
                                 android:foreground="@drawable/itgg_ic_back_white"
                                 android:background="@drawable/itgg_category_btn_ripple"/>
 
-                                <com.example.itggaming.util.CustomFontTextView
+                                <com.itg.itggaming.util.CustomFontTextView
                                     android:id="@+id/toolbar_category_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"

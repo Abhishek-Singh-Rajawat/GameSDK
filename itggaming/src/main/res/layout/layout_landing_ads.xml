@@ -9,7 +9,7 @@
     android:padding="10dp"
     android:layout_marginVertical="10dp"
     android:gravity="center">
-    <com.example.itggaming.util.CustomFontTextView
+    <com.itg.itggaming.util.CustomFontTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ADVERTISEMENT"

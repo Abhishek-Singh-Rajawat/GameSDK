@@ -20,7 +20,7 @@
             android:src="@drawable/itgg_ic_india_today_ph_medium"
             android:scaleType="fitXY"/>
     </androidx.cardview.widget.CardView>
-    <com.example.itggaming.util.CustomFontTextView
+    <com.itg.itggaming.util.CustomFontTextView
         android:id="@+id/tv_category_title"
         android:layout_width="120dp"
         android:layout_height="wrap_content"

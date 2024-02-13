@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/itgg_bg_featured_landing"
     tools:ignore="MissingDefaultResource">
-    <com.example.itggaming.util.CustomFontTextView
+    <com.itg.itggaming.util.CustomFontTextView
         android:id="@+id/tv_featured_heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
